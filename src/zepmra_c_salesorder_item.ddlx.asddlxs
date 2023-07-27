@@ -1,0 +1,82 @@
+@Metadata.layer: #CORE
+@UI:{
+       headerInfo:{
+                typeName: 'Item',
+                typeNamePlural: 'Items',
+                title:{
+                        type: #STANDARD,
+                        label: 'Connections',
+                        value: 'Itempos'
+                },
+                description:{
+                        type: #STANDARD,
+                        value: 'Prodid'
+                }
+       }
+}
+annotate view zepmra_c_salesorder_item with
+{
+  @UI.facet: [
+        {
+          id: 'item-info',
+          purpose: #STANDARD,
+          position: 1,
+          label: 'Sales Order Item',
+          type: #COLLECTION
+        },
+
+        { type: #FIELDGROUP_REFERENCE ,
+           label : 'Item information',
+           parentId: 'item-info',
+           id: 'Information' ,
+           position: 1,
+           targetQualifier: 'item-inf'
+        },
+        { type: #FIELDGROUP_REFERENCE ,
+           label : 'Item Total',
+           parentId: 'item-info',
+           id: 'Totals' ,
+           position: 2,
+           targetQualifier: 'item-tot'
+        }
+    ]
+
+  @UI.hidden: true
+  SoItemuuid;
+  @UI.hidden: true
+  Souuid;
+  @UI:{
+        lineItem: [{ position: 1 }], //report position
+        fieldGroup: [{ qualifier: 'item-inf', position: 1 ,importance: #HIGH}] // identification group postion
+  }
+  Itempos;
+  @UI:{
+        lineItem: [{ position: 2 }], //report position
+        selectionField: [{ position:2 }], // filter position
+        fieldGroup: [{ qualifier: 'item-inf', position: 2 ,importance: #HIGH}] // identification group postion
+  }
+  Prodid;
+  @UI:{
+        lineItem: [{ position: 3 }], //report position
+        fieldGroup: [{ qualifier: 'item-inf', position: 3 ,importance: #HIGH}] // identification group postion
+  }
+  Quantity;
+
+
+  @UI:{
+        lineItem: [{ position: 4 }], //report position
+        fieldGroup: [{ qualifier: 'item-tot', position: 1 ,importance: #HIGH}] // identification group postion
+    }
+  Grossamount;
+  @UI:{
+        lineItem: [{ position: 5 }], //report position
+        fieldGroup: [{ qualifier: 'item-tot', position: 2 ,importance: #HIGH}] // identification group postion
+    }
+  Net_Amount;
+
+  @UI:{
+      lineItem: [{ position: 6 }], //report position
+      fieldGroup: [{ qualifier: 'item-inf', position: 5 ,importance: #HIGH}] // identification group postion
+  }
+  Available;
+}
