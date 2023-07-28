@@ -4,7 +4,6 @@
 @AccessControl.authorizationCheck: #NOT_REQUIRED
 @EndUserText.label: 'Sales Order Item - BO view'
 
-
 @Search.searchable:true
 @ObjectModel: {
   semanticKey:  [ 'Itempos' ],

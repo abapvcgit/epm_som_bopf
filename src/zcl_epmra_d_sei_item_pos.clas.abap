@@ -19,16 +19,17 @@ CLASS zcl_epmra_d_sei_item_pos IMPLEMENTATION.
 
   METHOD /bobf/if_frw_determination~execute.
 
-    DATA lt_data TYPE ztepmra_i_salesorder_item.
+    "Read data with the given keys (typed with combined type table)
+    DATA lt_data TYPE  ztepmra_i_salesorder_item.
 
     io_read->retrieve(
       EXPORTING
-      iv_node                 = is_ctx-node_key   " uuid of node name
-      it_key                  = it_key            " keys given to the determination
+      iv_node                 =  is_ctx-node_key
+      it_key                  =  it_key
       IMPORTING
-      eo_message              = eo_message        " pass message object
-      et_data                 = lt_data           " itab with node data
-      et_failed_key           = et_failed_key     " pass failures
+      eo_message              =  eo_message
+      et_data                 =  lt_data
+      et_failed_key           =  et_failed_key
     ).
 
     SELECT FROM znwd_so_i_draft

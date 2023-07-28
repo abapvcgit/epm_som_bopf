@@ -20,7 +20,11 @@ define view zepmra_billstatus_vh
        @ObjectModel.text.element: ['BillStatus']
   key  FixedValue.domvalue_l as BillStatusID,
        @Semantics.text: true -- identifies the text field
-       ValueText.ddtext      as BillStatus
+       ValueText.ddtext      as BillStatus,
+       case FixedValue.domvalue_l
+       when ' ' then 2
+       else 3
+       end                   as PaidCriticaly
 }
 
 where

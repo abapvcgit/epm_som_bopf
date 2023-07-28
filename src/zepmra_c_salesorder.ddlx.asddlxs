@@ -87,27 +87,29 @@ annotate view zepmra_c_salesorder with
   BusinessPartner;
 
   @UI:{
-        lineItem: [{ position: 7, label: 'Overall Status' }] //report position
+        lineItem: [{ position: 7, label: 'Overall Status', criticality: '_OvStatus.StatusCriticality'}] //report position
   //        fieldGroup: [{ qualifier: 'information', position: 3 ,importance: #HIGH}]// identification group postion
   }
   @UI.textArrangement: #TEXT_ONLY
   @UI.dataPoint: {
-      title: 'Overall Status'
+      title: 'Overall Status',
+      criticality: '_OvStatus.StatusCriticality'
     }
   OverallStatus;
 
   @UI:{
-        lineItem: [{ position: 8 , label: 'Billing Status'}], 
-        fieldGroup: [{ qualifier: 'information', position: 4 ,importance: #HIGH}],// identification group postion
+        lineItem: [{ position: 8 , label: 'Billing Status', criticality: '_BillStatus.PaidCriticaly'}], 
+        fieldGroup: [{ qualifier: 'information', position: 4 ,importance: #HIGH, criticality: '_BillStatus.PaidCriticaly'}],// identification group postion
         identification: [{ position: 2 , type: #FOR_ACTION, dataAction: 'BOPF:SET_TO_PAID' , label: 'Set to Paid' }]
   }
+  @UI.textArrangement: #TEXT_ONLY
   BillingStatus;
-
   @UI:{
-        lineItem: [{ position: 9 ,label: 'Delivery Status' } ],//, { type: #FOR_ACTION, dataAction: 'BOPF:SET_TO_DEL', label: 'Set to Delivered' }], //report position
-        fieldGroup: [{ qualifier: 'information', position: 5 ,importance: #HIGH} ] ,// identification group postion
+        lineItem: [{ position: 9 ,label: 'Delivery Status', criticality: '_DelStatus.deliveryCriticaly' } ],//, { type: #FOR_ACTION, dataAction: 'BOPF:SET_TO_DEL', label: 'Set to Delivered' }], //report position
+        fieldGroup: [{ qualifier: 'information', position: 5 ,importance: #HIGH , criticality: '_DelStatus.deliveryCriticaly'} ] ,// identification group postion
         identification: [{ position: 1, type: #FOR_ACTION, dataAction: 'BOPF:SET_TO_DEL', label: 'Set to Delivered'  }]
   }    
+  @UI.textArrangement: #TEXT_ONLY
   DeliveryStatus;
 
   @UI:{

@@ -20,7 +20,12 @@ define view zepmra_delivery_vh
        @ObjectModel.text.element: ['DeliveryStatus']
   key  FixedValue.domvalue_l as DeliveryStatusID,
        @Semantics.text: true -- identifies the text field
-       ValueText.ddtext      as DeliveryStatus
+       ValueText.ddtext      as DeliveryStatus,
+       case FixedValue.domvalue_l
+       when ' ' then 2
+       else 3
+       end as deliveryCriticaly
+       
 }
 
 where

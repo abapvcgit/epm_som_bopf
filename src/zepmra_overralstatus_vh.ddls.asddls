@@ -14,13 +14,17 @@ define view zepmra_overralstatus_vh
                                        and FixedValue.domvalue_l = ValueText.domvalue_l
                                        and FixedValue.as4local   = ValueText.as4local
 {
-
        @Search.defaultSearchElement: true
        @Search.fuzzinessThreshold: 0.8
        @ObjectModel.text.element: ['OvStatus']
   key  FixedValue.domvalue_l as OvStatusID,
        @Semantics.text: true -- identifies the text field
-       ValueText.ddtext      as OvStatus
+       ValueText.ddtext      as OvStatus,
+       case FixedValue.domvalue_l
+        when 'X' then 1
+        else 3
+        end
+        as StatusCriticality
 }
 
 where

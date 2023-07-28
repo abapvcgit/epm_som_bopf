@@ -4,6 +4,7 @@
 @AccessControl.authorizationCheck: #NOT_REQUIRED
 @EndUserText.label: 'Sales Order Header  - BO view'
 
+
 @Search.searchable: true
 @ObjectModel: {
   -- Annotations for transactional processing

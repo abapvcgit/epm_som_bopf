@@ -6,12 +6,13 @@
                 title:{
                         type: #STANDARD,
                         label: 'Connections',
-                        value: 'Itempos'
+                        value: 'Prodid'
                 },
                 description:{
                         type: #STANDARD,
-                        value: 'Prodid'
-                }
+                        value: 'Itempos'
+                },imageUrl: '_Product.ProductPictureURL'
+
        }
 }
 annotate view zepmra_c_salesorder_item with
@@ -25,20 +26,27 @@ annotate view zepmra_c_salesorder_item with
           type: #COLLECTION
         },
 
-        { type: #FIELDGROUP_REFERENCE ,
-           label : 'Item information',
-           parentId: 'item-info',
-           id: 'Information' ,
+            { type: #FIELDGROUP_REFERENCE ,
+               label : 'Item information',
+               parentId: 'item-info',
+               id: 'Information' ,
+               position: 1,
+               targetQualifier: 'item-inf'
+            },
+            { type: #FIELDGROUP_REFERENCE ,
+               label : 'Item Total',
+               parentId: 'item-info',
+               id: 'Totals' ,
+               position: 2,
+               targetQualifier: 'item-tot'
+            },
+         {
+           purpose: #HEADER,
            position: 1,
-           targetQualifier: 'item-inf'
-        },
-        { type: #FIELDGROUP_REFERENCE ,
-           label : 'Item Total',
-           parentId: 'item-info',
-           id: 'Totals' ,
-           position: 2,
-           targetQualifier: 'item-tot'
-        }
+           importance: #HIGH,
+           type: #DATAPOINT_REFERENCE,
+           targetQualifier: 'Net_Amount'
+         }
     ]
 
   @UI.hidden: true
@@ -46,14 +54,19 @@ annotate view zepmra_c_salesorder_item with
   @UI.hidden: true
   Souuid;
   @UI:{
-        lineItem: [{ position: 1 }], //report position
         fieldGroup: [{ qualifier: 'item-inf', position: 1 ,importance: #HIGH}] // identification group postion
   }
   Itempos;
+
   @UI:{
-        lineItem: [{ position: 2 }], //report position
+        lineItem: [{position: 1, importance: #HIGH,  value: '_Product.ProductPictureURL' },
+                   {position: 2, importance: #HIGH } ], //report position
         selectionField: [{ position:2 }], // filter position
         fieldGroup: [{ qualifier: 'item-inf', position: 2 ,importance: #HIGH}] // identification group postion
+  }
+  @EndUserText: {
+     label:     'Product',
+     quickInfo: 'Product'
   }
   Prodid;
   @UI:{
@@ -72,6 +85,7 @@ annotate view zepmra_c_salesorder_item with
         lineItem: [{ position: 5 }], //report position
         fieldGroup: [{ qualifier: 'item-tot', position: 2 ,importance: #HIGH}] // identification group postion
     }
+  @UI.dataPoint.title: 'Net Amount'  
   Net_Amount;
 
   @UI:{

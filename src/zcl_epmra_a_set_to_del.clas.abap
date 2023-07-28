@@ -41,9 +41,9 @@ CLASS zcl_epmra_a_set_to_del IMPLEMENTATION.
 
       ENDIF.
       IF <s_sales_order>-billingstatus EQ 'P' AND <s_sales_order>-deliverystatus EQ 'D'.
-        <s_sales_order>-overallstatus = 'C'."Completed
+        <s_sales_order>-overallstatus = 'C'."Closed
       ELSEIF  <s_sales_order>-billingstatus EQ ' ' AND <s_sales_order>-deliverystatus EQ 'D'.
-        <s_sales_order>-overallstatus = 'I'."In Progress
+        <s_sales_order>-overallstatus = 'P'."In Progress
       ENDIF.
 
       " Update the changed data (billig_status) of the node instance
