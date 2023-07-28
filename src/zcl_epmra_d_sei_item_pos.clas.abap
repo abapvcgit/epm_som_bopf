@@ -31,7 +31,7 @@ CLASS zcl_epmra_d_sei_item_pos IMPLEMENTATION.
       et_failed_key           = et_failed_key     " pass failures
     ).
 
-    SELECT FROM znwd_so_i
+    SELECT FROM znwd_so_i_draft
       FIELDS souuid, MAX( itempos ) AS max
       GROUP BY souuid
       INTO TABLE @DATA(lt_max_item).
