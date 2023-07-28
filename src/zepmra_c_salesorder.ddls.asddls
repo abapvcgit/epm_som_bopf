@@ -4,7 +4,6 @@
 @AccessControl.authorizationCheck: #NOT_REQUIRED
 @EndUserText.label: 'Sales Order - Consumption View'
 
-
 @Metadata.allowExtensions: true
 @Search.searchable: true
 @ObjectModel:{

@@ -47,6 +47,8 @@ define view zepmra_i_salesorder_item
       @ObjectModel.text.element: ['AtpStatus']
       available          as Available,
       _Atp.ATPstatus     as AtpStatus,
+      @Semantics.imageUrl: true
+      _Product.ProductPictureURL as ProdPicture,
       /*  Exposed associations  */
       @ObjectModel.association.type: [#TO_COMPOSITION_PARENT, #TO_COMPOSITION_ROOT]
       _Header,

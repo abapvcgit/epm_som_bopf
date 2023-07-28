@@ -4,6 +4,7 @@
 @AccessControl.authorizationCheck: #NOT_REQUIRED
 @EndUserText.label: 'Sales Order items - Consumption View'
 
+
 @Metadata.allowExtensions: true
 @Search.searchable: true
 @ObjectModel:{
@@ -29,6 +30,7 @@ define view zepmra_c_salesorder_item
       Net_Amount,
       Available,
       AtpStatus,
+      ProdPicture,
       /* Associations */
       _Atp,
       @ObjectModel.association.type: [#TO_COMPOSITION_PARENT, #TO_COMPOSITION_ROOT]

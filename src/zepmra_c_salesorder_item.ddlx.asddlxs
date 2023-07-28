@@ -11,7 +11,7 @@
                 description:{
                         type: #STANDARD,
                         value: 'Itempos'
-                },imageUrl: '_Product.ProductPictureURL'
+                },imageUrl: 'ProdPicture'
 
        }
 }
@@ -57,9 +57,12 @@ annotate view zepmra_c_salesorder_item with
         fieldGroup: [{ qualifier: 'item-inf', position: 1 ,importance: #HIGH}] // identification group postion
   }
   Itempos;
-
+  
+   @UI.lineItem: [ { position: 01,importance: #HIGH } ] 
+   ProdPicture;
+  
   @UI:{
-        lineItem: [{position: 1, importance: #HIGH,  value: '_Product.ProductPictureURL' },
+        lineItem: [ //{position: 1, importance: #HIGH, label: ' ',  value: '_Product.ProductPictureURL' },
                    {position: 2, importance: #HIGH } ], //report position
         selectionField: [{ position:2 }], // filter position
         fieldGroup: [{ qualifier: 'item-inf', position: 2 ,importance: #HIGH}] // identification group postion
