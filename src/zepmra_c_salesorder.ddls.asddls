@@ -15,7 +15,6 @@
       semanticKey: ['SalesOrder'],
       draftEnabled: true
 }
-
 define view zepmra_c_salesorder
   as select from zepmra_i_salesorder
   association [0..*] to zepmra_c_salesorder_item as _Item on $projection.Souuid = _Item.Souuid

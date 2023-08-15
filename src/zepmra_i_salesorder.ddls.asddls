@@ -22,6 +22,7 @@
   -- Additional ETag annotation (time stamp)
   entityChangeStateId: 'Lchg_Date_Time'
 }
+
 /*+[hideWarning] { "IDS" : [ "CARDINALITY_CHECK" ]  } */
 define view zepmra_i_salesorder
   as select from znwd_so as Header
@@ -40,7 +41,7 @@ define view zepmra_i_salesorder
       salesorder                as SalesOrder,
       @Consumption.valueHelpDefinition: [{ association: '_Partner' }]
       @ObjectModel.text.element: ['PartnerName']
-      @ObjectModel.mandatory: true
+      @ObjectModel.mandatory: 'EXTERNAL_CALCULATION'
       businesspartner           as BusinessPartner,
       _Partner.CompanyName      as PartnerName,
       @ObjectModel.readOnly: true
